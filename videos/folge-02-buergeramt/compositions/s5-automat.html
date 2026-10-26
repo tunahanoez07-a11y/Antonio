@@ -1,0 +1,82 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s5-booth { position: absolute; left: 470px; top: 640px; width: 500px; height: 922px; background: #D9D4CB; border: 7px solid var(--ink); border-radius: 18px 18px 4px 4px; overflow: hidden; }
+    .s5-curtain { position: absolute; right: 0; top: 150px; width: 250px; height: 772px; background: repeating-linear-gradient(90deg, #C8463A 0 40px, #A93A30 40px 50px); border-left: 6px solid var(--ink); }
+    .s5-row { font-size: 46px; padding: 12px 0; display: flex; gap: 22px; align-items: center; }
+    .s5-ok { color: #3E9B56; font-weight: 900; }
+    .s5-no { color: var(--red); font-weight: 900; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+
+    <!-- Fotoautomat im Flur, 10 € -->
+    <div id="s5-a" class="shot clip" data-start="0" data-duration="3.44" data-track-index="0">
+      <div class="cam">
+        <div class="abs" style="left: 0; top: 560px; width: 1080px; height: 1002px; background: #E6E0D4"></div>
+        <div class="s5-booth">
+          <div style="background: var(--orange); color: #fff; font-weight: 900; font-size: 74px; text-align: center; padding: 20px 0; border-bottom: 6px solid var(--ink)">FOTO</div>
+          <div class="s5-curtain"></div>
+          <div style="position: absolute; left: 30px; top: 210px; width: 180px; height: 130px; background: #2E2E2E; border-radius: 10px"></div>
+          <div style="position: absolute; left: 60px; top: 380px; width: 120px; height: 24px; background: var(--ink); border-radius: 12px"></div>
+        </div>
+        <div id="s5-price" class="bubble" style="left: 70px; top: 650px; width: 380px; font-size: 80px; font-weight: 900; opacity: 0">10,00 €</div>
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 130px; top: 1000px; width: 300px"></div>
+      </div>
+    </div>
+
+    <!-- Nimmt nur Münzen -->
+    <div id="s5-b" class="shot clip" data-start="3.44" data-duration="1.93" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="sign" data-pop="0.4" style="left: 170px; top: 620px; width: 740px; height: 170px; font-size: 92px; line-height: 160px; background: var(--red)">NUR MÜNZEN!</div>
+        <svg class="abs" data-pop="0.6" style="left: 400px; top: 840px; width: 280px; height: 160px" viewBox="0 0 280 160">
+          <rect x="10" y="20" width="260" height="120" rx="12" fill="#9FC6A8" stroke="#1E1E1E" stroke-width="7"/>
+          <text x="140" y="100" text-anchor="middle" font-family="Inter" font-weight="900" font-size="58" fill="#1E1E1E">20 €</text>
+          <path d="M20 10 L260 150 M260 10 L20 150" stroke="#D9473A" stroke-width="14" stroke-linecap="round"/>
+        </svg>
+        <div class="tk" data-kind="tom" data-talk style="left: 40px; top: 1150px; width: 1000px"></div>
+      </div>
+    </div>
+
+    <!-- Meldebescheinigung fehlt -->
+    <div id="s5-c" class="shot clip" data-start="5.37" data-duration="3.75" data-track-index="0" data-zoom="1.04">
+      <div class="cam">
+        <div class="card" data-pop="0" style="left: 90px; top: 620px; width: 900px">
+          <div class="card-head"><span class="dot"></span>Antrag Personalausweis</div>
+          <div class="card-body">
+            <div class="s5-row"><span class="s5-ok">✓</span> Foto (neu, 10 €)</div>
+            <div class="s5-row"><span class="s5-ok">✓</span> Antragsformular</div>
+            <div id="s5-melde" class="s5-row" style="opacity: 0"><span class="s5-no">✗</span> <b>Meldebescheinigung</b></div>
+          </div>
+        </div>
+        <div id="s5-schalter" class="marker abs" style="left: 0; width: 1080px; top: 1150px; text-align: center; font-size: 110px; color: var(--red); opacity: 0">→ Schalter 7</div>
+        <div class="ground" style="top: 1752px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 430px; top: 1300px; width: 240px"></div>
+      </div>
+    </div>
+
+    <!-- Mit Termin. In 11 Wochen. -->
+    <div id="s5-d" class="shot clip" data-start="9.12" data-duration="3.06" data-track-index="0" data-zoom="1.06">
+      <div class="cam">
+        <div class="card" data-pop="0" style="left: 110px; top: 620px; width: 860px">
+          <div class="card-head"><span class="dot"></span>Schalter 7 · Nächster freier Termin</div>
+          <div class="card-body" style="text-align: center; padding: 34px 30px 44px">
+            <div id="s5-weeks" style="font-size: 116px; font-weight: 900; color: var(--red); line-height: 1.1; opacity: 0">in 11 Wochen</div>
+            <div class="muted" style="font-size: 36px">Termin nur online buchbar</div>
+          </div>
+        </div>
+        <div class="tk" data-kind="tom" data-talk style="left: 40px; top: 1150px; width: 1000px"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s5"]');
+    TomKit.setup(tl, root, 37.42);
+    tl.fromTo("#s5-price", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 2.52);
+    tl.fromTo("#s5-melde", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.22, ease: "back.out(2)" }, 6.04);
+    tl.fromTo("#s5-schalter", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.in" }, 7.96);
+    tl.fromTo("#s5-weeks", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 10.32);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

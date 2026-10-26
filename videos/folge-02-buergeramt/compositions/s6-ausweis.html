@@ -1,0 +1,82 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #s6-letter { left: 0; top: 0; width: 220px; height: 150px; background: #fff; border: 5px solid var(--ink); border-radius: 10px; overflow: hidden; }
+    .s6-id { position: absolute; left: 70px; top: 640px; width: 940px; height: 590px; background: #EAF0E6; border: 7px solid var(--ink); border-radius: 30px; overflow: hidden; }
+    .s6-id .head { background: #5E8C6A; color: #fff; font-weight: 900; font-size: 46px; padding: 22px 34px; letter-spacing: .05em; }
+    .s6-id .photo { position: absolute; left: 36px; top: 130px; width: 290px; height: 380px; background: #fff; border: 5px solid var(--ink); border-radius: 10px; overflow: hidden; }
+    .s6-id .field { position: absolute; left: 370px; font-size: 32px; color: #6b7a68; }
+    .s6-id .val { font-size: 70px; font-weight: 900; color: var(--ink); position: relative; display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+
+    <!-- 6 Wochen später: Brief -->
+    <div id="s6-a" class="shot clip" data-start="0" data-duration="2.2" data-track-index="0">
+      <div class="cam">
+        <div class="abs marker" data-pop="0.05" style="left: 0; width: 1080px; top: 610px; text-align: center; font-size: 104px">6 WOCHEN SPÄTER</div>
+        <div class="ground" style="top: 1592px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 340px; top: 870px; width: 380px"></div>
+        <div id="s6-letter" class="abs" style="opacity: 0">
+          <svg viewBox="0 0 220 150" width="100%" height="100%"><path d="M0 0 L110 80 L220 0" fill="none" stroke="#1E1E1E" stroke-width="6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Name: TIM -->
+    <div id="s6-b" class="shot clip" data-start="2.2" data-duration="2.16" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="s6-id" data-pop="0">
+          <div class="head">PERSONALAUSWEIS</div>
+          <div class="photo"><div class="tk" data-kind="tom" style="left: -8px; top: 30px; width: 300px"></div></div>
+          <div class="field" style="top: 150px">Name<br /><span class="val">TIM
+            <svg class="abs" style="left: -50px; top: -26px; width: 300px; height: 150px; overflow: visible" viewBox="0 0 300 150">
+              <path id="s6-circle" d="M40 80 C40 16 250 6 270 62 C290 126 80 152 40 106 C20 86 60 34 130 26" fill="none" stroke="#E39B22" stroke-width="12" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
+            </svg></span></div>
+          <div class="field" style="top: 330px">Vorname<br /><span class="val" style="font-size: 52px">Tom</span></div>
+          <div class="field" style="top: 460px; font-size: 28px">Gültig bis 2036</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [seufzt] Naja. -->
+    <div id="s6-c" class="shot clip" data-start="4.36" data-duration="1.6" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="tk" data-kind="tom" data-talk data-eyes="shut" style="left: -10px; top: 640px; width: 1100px"></div>
+      </div>
+    </div>
+
+    <!-- Termin zum Ändern: in 11 Wochen -->
+    <div id="s6-d" class="shot clip" data-start="5.96" data-duration="3.84" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="card" data-pop="0.1" style="left: 110px; top: 620px; width: 860px">
+          <div class="card-head"><span class="dot"></span>Namensänderung · Nächster Termin</div>
+          <div class="card-body" style="text-align: center; padding: 34px 30px 44px">
+            <div id="s6-weeks" style="font-size: 116px; font-weight: 900; color: var(--red); line-height: 1.1; opacity: 0">in 11 Wochen</div>
+            <div class="muted" style="font-size: 36px">Bitte Personalausweis mitbringen</div>
+          </div>
+        </div>
+        <div class="ground" style="top: 1752px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 430px; top: 1250px; width: 260px"></div>
+      </div>
+    </div>
+
+    <!-- Abgang + Stempel -->
+    <div id="s6-e" class="shot clip" data-start="9.8" data-duration="2.6" data-track-index="0" data-zoom="1.0">
+      <div class="cam">
+        <div class="ground" style="top: 1565px"></div>
+        <div id="s6-walker" class="tk" data-kind="tom" data-look="right" data-walk="0.28" data-amp="16" style="left: 390px; top: 1000px; width: 300px"></div>
+        <div class="tk" data-kind="stamp" data-top="DOPPELTER STRESSO" data-bottom="WIE IMMER" data-slam="0.5" style="left: 300px; top: 560px; width: 480px"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s6"]');
+    TomKit.setup(tl, root, 49.6);
+    tl.fromTo("#s6-letter", { opacity: 1, x: 1100, y: 600, rotation: 25 }, { opacity: 1, x: 560, y: 1140, rotation: -8, duration: 0.45, ease: "power3.out" }, 0.9);
+    tl.to("#s6-circle", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 2.92);
+    tl.fromTo("#s6-weeks", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 8.24);
+    tl.fromTo("#s6-walker", { x: 0 }, { x: 820, duration: 1.2, ease: "power1.in" }, 9.85);
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

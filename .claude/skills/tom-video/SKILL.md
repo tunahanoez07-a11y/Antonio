@@ -21,7 +21,8 @@ Vor dem Bauen den HyperFrames-Skill lesen (`/hyperframes`, Contract + `reference
 - **Tom**: großer runder Kopf, dicke schwarze Kontur, müde Augen mit grauen Augenringen, hält **immer** einen braunen To-go-Becher. Auf dem Becher steht **„TIM“** – niemand schreibt seinen Namen richtig. Den Gag in jeder Folge mindestens einmal ausspielen (Becher, Ticket, Überweisung, E-Mail, Durchsage).
 - Erzählstil: Ich-Erzähler, trocken, resigniert, kurze Sätze, konkrete Zahlen als Pointen.
 - Outro: resignierter Schlusssatz („Naja.“), Tom geht nach rechts aus dem Bild, dann knallt der Kanal-Stempel **„DOPPELTER STRESSO – WIE IMMER“** rein (`data-kind="stamp"`).
-- Nebenfiguren: `guy` mit `data-hat="conductor|cap|glasses"`, `data-color` für Kleidung, `data-pose="shrug"`.
+- Nebenfiguren: `guy` mit `data-hat="conductor|cap|glasses|hair"` (`hair` = lange Haare + Dutt, Farbe über `data-hair`), `data-color` für Kleidung, `data-pose="shrug"`.
+- Gesichter: `data-mouth="open|smile"` (z. B. Lächeln aufs Passfoto), `data-eyes="shut"` (Seufzer). Becher einzeln: `data-kind="cup" data-label="KAI"`.
 
 ## Dramaturgie (für ~60 s, ca. 120–130 Wörter Sprechtext)
 
@@ -37,9 +38,10 @@ Vor dem Bauen den HyperFrames-Skill lesen (`/hyperframes`, Contract + `reference
 Thema vom User (sonst einen deutschen Alltagsfrust vorschlagen: Bürokratie, Behörden, Bahn, Vermieter, Paketdienst, Arzttermin, Steuererklärung …). Skript auf Deutsch schreiben, Zahlen ausschreiben („sieben Euro vierzig“), damit die Stimme sie richtig spricht. Vor dem Seufzer `[sighs]` einfügen.
 
 ### 2. Stimme (ElevenLabs-Connector)
-- `creative_create_flow` → `creative_generate_speech` mit `model_id: eleven_v4`, Stimme **Dennis** `voice_id: bGkjVHUyQ9rRhorWJufM` (bodenständig, deutsch). Andere Stimme nur, wenn der User es will.
-- Status pollen, Take wählen, `content_url` per `curl` nach `assets/voiceover.mp3` laden.
-- Wort-Timings: `creative_add_flow_asset_node` (generation_id des Takes) → `creative_transcribe_audio` (`eleven_scribe_v1`, `connect_from` = Asset-Node) → `words_download_url` nach `assets/words.json` laden.
+- `creative_create_flow` → `creative_generate_speech` mit `model_id: eleven_v4`, Stimme **Dennis** `voice_id: bGkjVHUyQ9rRhorWJufM` (bodenständig, deutsch), **`generations_count: 1`** (User-Wunsch: nur ein Take, ~760–800 Credits pro Minute). Andere Stimme nur, wenn der User es will. Credits dem User am Ende nennen.
+- Status pollen, `content_url` per `curl` nach `assets/voiceover-raw.mp3` laden.
+- Wort-Timings: `creative_add_flow_asset_node` (generation_id des Takes; gibt ggf. die TTS-Node-ID zurück – die verwenden) → `creative_transcribe_audio` (`eleven_scribe_v1`, `connect_from` = diese Node) → `words_download_url` nach `assets/words-raw.json` laden.
+- **Länge anpassen:** Ist der Take kürzer als Zieldauer − 3 s, mit `add_pauses.py` Kunstpausen (0,6–1,0 s) direkt nach Pointen einfügen (`PAUSES` = Schnittpunkte in Wortlücken). Das schreibt `assets/voiceover.mp3` + `assets/words.json` mit verschobenen Timings. Ohne Pausen: beide Dateien einfach umbenennen.
 - Hinweis: Lokale Transkription (whisper) und Kokoro-TTS funktionieren hier nicht (HuggingFace gesperrt, Kokoro kann kein Deutsch).
 
 ### 3. Projekt anlegen

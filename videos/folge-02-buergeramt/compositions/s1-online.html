@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s1-id { position: absolute; background: #EAF0E6; border: 5px solid var(--ink); border-radius: 22px; overflow: hidden; }
+    .s1-id .head { background: #5E8C6A; color: #fff; font-weight: 900; font-size: 30px; padding: 14px 22px; letter-spacing: .04em; }
+    .s1-id .photo { position: absolute; left: 24px; top: 82px; width: 150px; height: 190px; background: #fff; border: 4px solid var(--ink); border-radius: 8px; overflow: hidden; }
+    .s1-id .ln { position: absolute; left: 196px; height: 14px; border-radius: 7px; background: #B9C7B5; }
+    #s1-phone { left: 290px; top: 600px; width: 500px; height: 730px; background: var(--ui-dark); border-radius: 64px; border: 6px solid var(--ink); padding: 26px; }
+    #s1-phone .screen { width: 100%; height: 100%; background: var(--paper); border-radius: 40px; overflow: hidden; }
+    #s1-phone .app-head { background: #2B4C8C; color: #fff; font-weight: 900; font-size: 32px; padding: 30px 28px 22px; }
+    #s1-phone .box { margin: 22px; background: #fff; border: 4px solid var(--ink); border-radius: 20px; padding: 20px 22px; font-size: 30px; line-height: 1.4; }
+    #s1-phone .btn { margin: 0 22px; background: var(--orange); color: #fff; font-weight: 900; font-size: 32px; text-align: center; border-radius: 18px; padding: 18px; border: 4px solid var(--ink); }
+    .s1-case { position: absolute; background: #6F86A8; border: 6px solid var(--ink); border-radius: 18px; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+
+    <!-- Hook: Tom + abgelaufener Ausweis -->
+    <div id="s1-a" class="shot clip" data-start="0" data-duration="2.56" data-track-index="0">
+      <div class="cam">
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 90px; top: 760px; width: 420px"></div>
+        <div class="s1-id" data-pop="1.05" style="left: 540px; top: 800px; width: 480px; height: 300px">
+          <div class="head">PERSONALAUSWEIS</div>
+          <div class="photo"><div class="tk" data-kind="tom" style="left: -6px; top: 8px; width: 160px"></div></div>
+          <div class="ln" style="top: 110px; width: 230px"></div>
+          <div class="ln" style="top: 146px; width: 180px"></div>
+          <div class="ln" style="top: 182px; width: 210px"></div>
+          <span id="s1-expired" class="pill" style="position: absolute; left: 190px; top: 220px; background: var(--red); font-size: 30px; opacity: 0">abgelaufen</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Online-Terminbuchung -->
+    <div id="s1-b" class="shot clip" data-start="2.56" data-duration="3.34" data-track-index="0">
+      <div class="cam">
+        <div id="s1-phone" class="abs" data-pop="0">
+          <div class="screen">
+            <div class="app-head">Bürgeramt · Online-Termin</div>
+            <div class="box"><span class="muted">Dienstleistung</span><br /><b>Personalausweis beantragen</b></div>
+            <div class="btn">Termin suchen</div>
+            <div id="s1-search" class="box" style="text-align: center; opacity: 0">⏳ Suche freie Termine …</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- in 11 Wochen -->
+    <div id="s1-c" class="shot clip" data-start="5.9" data-duration="3.3" data-track-index="0" data-zoom="1.06">
+      <div class="cam">
+        <div class="card" data-pop="0" style="left: 110px; top: 620px; width: 860px">
+          <div class="card-head"><span class="dot"></span>Nächster freier Termin</div>
+          <div class="card-body" style="text-align: center; padding: 34px 30px 44px">
+            <div id="s1-weeks" style="font-size: 116px; font-weight: 900; color: var(--red); line-height: 1.1; opacity: 0">in 11 Wochen</div>
+            <div class="muted" style="font-size: 36px">Do., 14. Januar · 07:40 Uhr</div>
+          </div>
+        </div>
+        <div class="tk" data-kind="tom" data-talk style="left: 40px; top: 1150px; width: 1000px"></div>
+      </div>
+    </div>
+
+    <!-- Urlaub in 3 Wochen -->
+    <div id="s1-d" class="shot clip" data-start="9.2" data-duration="2.22" data-track-index="0">
+      <div class="cam">
+        <div class="card" data-pop="0.44" style="left: 380px; top: 640px; width: 640px">
+          <div class="card-head"><span class="dot"></span>Mein Urlaub</div>
+          <div class="card-body" style="text-align: center">
+            <div style="font-size: 64px; font-weight: 900">✈ Mallorca</div>
+            <div style="font-size: 44px">in <b style="background: #f6dfae; padding: 0 10px">3 Wochen</b></div>
+          </div>
+        </div>
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 60px; top: 1000px; width: 300px"></div>
+        <div class="s1-case" style="left: 330px; top: 1300px; width: 170px; height: 250px">
+          <div style="position: absolute; left: 50px; top: -60px; width: 60px; height: 60px; border: 6px solid var(--ink); border-bottom: none; border-radius: 10px 10px 0 0"></div>
+          <div style="position: absolute; left: 50px; top: 20px; width: 8px; height: 200px; background: rgba(0,0,0,.25)"></div>
+          <div style="position: absolute; left: 100px; top: 20px; width: 8px; height: 200px; background: rgba(0,0,0,.25)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s1"]');
+    TomKit.setup(tl, root, 0);
+    tl.fromTo("#s1-expired", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2.5)" }, 1.6);
+    tl.fromTo("#s1-search", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 4.85);
+    tl.fromTo("#s1-weeks", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 7.68);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

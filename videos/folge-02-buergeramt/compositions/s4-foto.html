@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s4-desk { position: absolute; left: 380px; top: 1250px; width: 700px; height: 320px; background: var(--wood); border: 7px solid var(--ink); }
+    .s4-photo { position: absolute; left: 260px; top: 620px; width: 560px; height: 700px; background: #fff; border: 8px solid var(--ink); border-radius: 10px; overflow: hidden; }
+    #s4-x { left: 170px; top: 1230px; width: 740px; padding: 14px 0; border: 12px solid var(--red); border-radius: 22px; color: var(--red); font-weight: 900; font-size: 70px; text-align: center; background: rgba(242, 238, 230, 0.7); }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+
+    <!-- Am Schalter -->
+    <div id="s4-a" class="shot clip" data-start="0" data-duration="3.2" data-track-index="0">
+      <div class="cam">
+        <div class="bubble" data-pop="1.16" style="left: 340px; top: 620px; width: 690px; font-size: 52px">Ihr Foto ist nicht biometrisch.</div>
+        <div class="tk" data-kind="guy" data-hat="hair" data-color="#8E6FB0" style="left: 620px; top: 860px; width: 330px"></div>
+        <div class="s4-desk"><div style="margin: 40px 0 0 60px; font-weight: 900; font-size: 44px">Schalter 3</div></div>
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 60px; top: 1000px; width: 300px"></div>
+      </div>
+    </div>
+
+    <!-- Sie lächeln. -->
+    <div id="s4-b" class="shot clip" data-start="3.2" data-duration="1.08" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="s4-photo">
+          <div class="tk" data-kind="tom" data-mouth="smile" style="left: 20px; top: 70px; width: 520px"></div>
+        </div>
+        <div id="s4-x" class="abs" data-slam="0.12" data-layout-allow-occlusion>✗ LÄCHELN</div>
+      </div>
+    </div>
+
+    <!-- Ich lächle nicht. -->
+    <div id="s4-c" class="shot clip" data-start="4.28" data-duration="1.2" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="tk" data-kind="tom" data-talk style="left: 160px; top: 700px; width: 760px"></div>
+      </div>
+    </div>
+
+    <!-- Ich lächle nie. -->
+    <div id="s4-d" class="shot clip" data-start="5.48" data-duration="2.4" data-track-index="0" data-zoom="1.1">
+      <div class="cam">
+        <div class="tk" data-kind="tom" data-talk style="left: -10px; top: 640px; width: 1100px"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s4"]');
+    TomKit.setup(tl, root, 29.54);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>

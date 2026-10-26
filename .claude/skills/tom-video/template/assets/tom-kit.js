@@ -24,14 +24,18 @@
       `<path d="M${cx - 16} 107 Q${cx} 115 ${cx + 16} 107" fill="none" stroke="${BAG}" stroke-width="4.5" stroke-linecap="round"/>`;
     return one(92 + dx) + one(148 + dx);
   }
-  function mouths(look, open) {
+  // mode: true/"open" = offener Mund, "smile" = Lächeln (z. B. Passfoto), sonst geschlossen
+  function mouths(look, mode) {
     const dx = look === "right" ? 10 : look === "left" ? -10 : 0;
-    return `<line class="tk-mouth-closed" x1="${103 + dx}" y1="136" x2="${137 + dx}" y2="136" stroke="${INK}" stroke-width="7" stroke-linecap="round" style="opacity:${open ? 0 : 1}"/>` +
-      `<ellipse class="tk-mouth-open" cx="${120 + dx}" cy="138" rx="15" ry="17" fill="${INK}" style="opacity:${open ? 1 : 0}"/>`;
+    const open = mode === true || mode === "open";
+    const smile = mode === "smile";
+    return `<line class="tk-mouth-closed" x1="${103 + dx}" y1="136" x2="${137 + dx}" y2="136" stroke="${INK}" stroke-width="7" stroke-linecap="round" style="opacity:${open || smile ? 0 : 1}"/>` +
+      `<ellipse class="tk-mouth-open" cx="${120 + dx}" cy="138" rx="15" ry="17" fill="${INK}" style="opacity:${open ? 1 : 0}"/>` +
+      (smile ? `<path d="M${96 + dx} 128 Q${120 + dx} 156 ${144 + dx} 128" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/>` : "");
   }
-  function head(look, open, extra) {
-    return `<circle cx="120" cy="95" r="78" fill="#fff" stroke="${INK}" stroke-width="10"/>` +
-      eyes(look) + mouths(look, open) + (extra || "");
+  function head(look, mouth, extra, under) {
+    return (under || "") + `<circle cx="120" cy="95" r="78" fill="#fff" stroke="${INK}" stroke-width="10"/>` +
+      eyes(look) + mouths(look, mouth) + (extra || "");
   }
   function cup(label) {
     return `<g class="tk-cup">
@@ -59,7 +63,7 @@
       ${o.nocup
         ? `<path d="M120 204 L92 300" stroke="${INK}" stroke-width="10" stroke-linecap="round" fill="none"/><path d="M120 204 L150 298" stroke="${INK}" stroke-width="10" stroke-linecap="round" fill="none"/>`
         : `<path d="M120 200 L82 250 L102 270" stroke="${INK}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`}
-      <g class="tk-head" style="transform-origin:120px 170px">${head(look, o.mouth === "open")}</g>
+      <g class="tk-head" style="transform-origin:120px 170px">${head(look, o.mouth)}</g>
     </svg>`;
   }
 
@@ -72,8 +76,12 @@
          <path d="M120 206 L162 236 L180 190" stroke="${INK}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
       : `<path d="M120 204 L90 298" stroke="${INK}" stroke-width="10" stroke-linecap="round" fill="none"/>
          <path d="M120 204 L152 296" stroke="${INK}" stroke-width="10" stroke-linecap="round" fill="none"/>`;
-    let extra = "";
-    if (o.hat === "conductor") {
+    let extra = "", under = "";
+    if (o.hat === "hair") {
+      // lange Haare hinter dem Kopf + Dutt
+      under = `<path d="M38 100 Q30 10 120 12 Q210 10 202 100 L206 190 Q160 176 150 120 L90 120 Q80 176 34 190 Z" fill="${o.hair || "#6B4A2E"}" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>`;
+      extra = `<path d="M46 74 Q60 14 120 16 Q180 14 194 74 Q150 44 120 50 Q90 44 46 74 Z" fill="${o.hair || "#6B4A2E"}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/><circle cx="120" cy="6" r="24" fill="${o.hair || "#6B4A2E"}" stroke="${INK}" stroke-width="6"/>`;
+    } else if (o.hat === "conductor") {
       extra = `<path d="M50 52 Q120 -6 190 52 L186 66 L54 66 Z" fill="#26355E" stroke="${INK}" stroke-width="7" stroke-linejoin="round"/>
         <rect x="54" y="52" width="132" height="14" fill="#C8102E"/>
         <path d="M40 66 L200 66" stroke="${INK}" stroke-width="9" stroke-linecap="round"/>`;
@@ -88,7 +96,7 @@
     return `<svg viewBox="0 0 240 460" width="100%" style="overflow:visible;display:block">
       <line x1="120" y1="172" x2="120" y2="332" stroke="${INK}" stroke-width="10" stroke-linecap="round"/>
       ${legs(o.stride ? 10 : 0)}${body}${arms}
-      <g class="tk-head" style="transform-origin:120px 170px">${head(look, o.mouth === "open", extra)}</g>
+      <g class="tk-head" style="transform-origin:120px 170px">${head(look, o.mouth, extra, under)}</g>
     </svg>`;
   }
 
@@ -158,7 +166,7 @@
       const d = el.dataset;
       if (d.kind === "stamp") { el.innerHTML = stamp(d.top || "DOPPELTER STRESSO", d.bottom || "WIE IMMER"); return; }
       const b = builders[d.kind];
-      if (b) el.innerHTML = b({ look: d.look, mouth: d.mouth, hat: d.hat, color: d.color, pose: d.pose, label: d.label, nocup: d.nocup === "1", stride: d.stride === "1" });
+      if (b) el.innerHTML = b({ look: d.look, mouth: d.mouth, hat: d.hat, color: d.color, pose: d.pose, label: d.label, hair: d.hair, nocup: d.nocup === "1", stride: d.stride === "1" });
     });
   }
 
