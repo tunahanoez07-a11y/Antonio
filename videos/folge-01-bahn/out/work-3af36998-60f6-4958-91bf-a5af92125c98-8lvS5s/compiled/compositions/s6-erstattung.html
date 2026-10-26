@@ -1,0 +1,89 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #s6-phone { left: 440px; top: 610px; width: 520px; height: 740px; background: var(--ui-dark); border-radius: 64px; border: 6px solid var(--ink); padding: 26px; }
+    #s6-phone .screen { width: 100%; height: 100%; background: var(--paper); border-radius: 40px; overflow: hidden; }
+    #s6-phone .app-head { background: #C8102E; color: #fff; font-weight: 900; font-size: 34px; padding: 30px 30px 22px; }
+    #s6-phone .conn { margin: 26px 22px; background: #fff; border: 4px solid var(--ink); border-radius: 22px; padding: 22px 24px; font-size: 32px; line-height: 1.4; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+
+    <!-- S22: 7,40 € -->
+    <div id="s6-a" class="shot clip" data-start="0" data-duration="2.7" data-track-index="0">
+      <div class="cam">
+        <div class="card" data-pop="0" style="left: 110px; top: 620px; width: 860px">
+          <div class="card-head"><span class="dot"></span>Meine Bank · Neue Gutschrift</div>
+          <div class="card-body" style="text-align: center; padding: 40px 34px 50px">
+            <div class="muted" style="font-size: 36px">Fahrgastrechte – Erstattung</div>
+            <div id="s6-amount" style="font-size: 170px; font-weight: 900; color: #3E9B56; line-height: 1.15; opacity: 0">7,40 €</div>
+            <div class="muted" style="font-size: 32px">für 2 Std. 14 Min. Verspätung</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S23: Überwiesen an: TIM -->
+    <div id="s6-b" class="shot clip" data-start="2.7" data-duration="2.5" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="card" style="left: 80px; top: 620px; width: 920px">
+          <div class="card-body" style="padding: 40px 44px">
+            <div class="muted" style="font-size: 40px">Betrag</div>
+            <div style="font-size: 70px; font-weight: 900">7,40 €</div>
+            <div class="muted" style="font-size: 40px; margin-top: 20px">Überwiesen an</div>
+            <div style="font-size: 96px; font-weight: 900; position: relative; display: inline-block">TIM
+              <svg class="abs" style="left: -50px; top: -26px; width: 300px; height: 170px; overflow: visible" viewBox="0 0 300 170">
+                <path id="s6-circle" d="M40 90 C40 20 250 10 270 70 C290 140 80 170 40 120 C20 96 60 40 130 30" fill="none" stroke="#E39B22" stroke-width="12" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="tk" data-kind="cup" data-pop="1.6" style="left: 740px; top: 1130px; width: 230px"></div>
+      </div>
+    </div>
+
+    <!-- S24: Seufzer -->
+    <div id="s6-c" class="shot clip" data-start="5.2" data-duration="1.5" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="tk" data-kind="tom" data-talk data-eyes="shut" style="left: -10px; top: 640px; width: 1100px"></div>
+      </div>
+    </div>
+
+    <!-- S25: Morgen fahre ich wieder -->
+    <div id="s6-d" class="shot clip" data-start="6.7" data-duration="2.8" data-track-index="0">
+      <div class="cam">
+        <div id="s6-phone" class="abs" data-pop="0.1">
+          <div class="screen">
+            <div class="app-head">Bahn-App</div>
+            <div class="conn">
+              <span class="muted">Morgen</span><br />
+              <b style="font-size: 40px">07:12 &nbsp;ICE 578</b><br />
+              <span class="muted">Hamburg → München</span><br />
+              <span id="s6-booked" class="pill" style="background: #3E9B56; margin-top: 18px; font-size: 34px; opacity: 0">gebucht ✓</span>
+            </div>
+          </div>
+        </div>
+        <div class="ground" style="top: 1572px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 70px; top: 1000px; width: 300px"></div>
+      </div>
+    </div>
+
+    <!-- S26: Abgang + Stempel -->
+    <div id="s6-e" class="shot clip" data-start="9.5" data-duration="2.8" data-track-index="0" data-zoom="1.0">
+      <div class="cam">
+        <div class="ground" style="top: 1565px"></div>
+        <div id="s6-walker" class="tk" data-kind="tom" data-look="right" data-walk="0.28" data-amp="16" style="left: 390px; top: 1000px; width: 300px"></div>
+        <div class="tk" data-kind="stamp" data-top="DOPPELTER STRESSO" data-bottom="WIE IMMER" data-slam="0.5" style="left: 300px; top: 560px; width: 480px"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s6"]');
+    TomKit.setup(tl, root, 49.7);
+    tl.fromTo("#s6-amount", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 1.5);
+    tl.to("#s6-circle", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 3.9);
+    tl.fromTo("#s6-booked", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 8.62);
+    tl.fromTo("#s6-walker", { x: 0 }, { x: 820, duration: 1.4, ease: "power1.in" }, 9.55);
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

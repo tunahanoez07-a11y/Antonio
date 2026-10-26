@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <script src="assets/words.js"></script>
+    <script src="assets/tom-kit.js"></script>
+    <style>
+      @font-face {
+        font-family: "Permanent Marker";
+        src: url("assets/fonts/PermanentMarker.woff2") format("woff2");
+      }
+      :root {
+        --paper: #f2eee6;
+        --ink: #1e1e1e;
+        --orange: #e39b22;
+        --red: #d9473a;
+        --ui-dark: #2e2e2e;
+        --wood: #c8ae7e;
+        --navy: #1f3a6b;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--paper); }
+      #root { position: relative; width: 100%; height: 100%; background: var(--paper); font-family: Inter, sans-serif; color: var(--ink); }
+
+      /* Gemeinsame Bausteine für alle Szenen */
+      .shot { position: absolute; inset: 0; overflow: hidden; background: var(--paper); }
+      .cam { position: absolute; inset: 0; transform-origin: 50% 55%; }
+      .abs { position: absolute; }
+      .ground { position: absolute; left: -40px; right: -40px; height: 4px; background: #c9c3b8; }
+      .tk { position: absolute; }
+      .marker { font-family: "Permanent Marker", Inter, sans-serif; }
+      .card {
+        position: absolute; background: #fff; border: 5px solid var(--ink); border-radius: 26px;
+        overflow: hidden; box-shadow: 0 6px 0 rgba(30, 30, 30, 0.12);
+      }
+      .card-head {
+        background: var(--ui-dark); color: #fff; font-weight: 700; font-size: 34px;
+        padding: 22px 30px; display: flex; align-items: center; gap: 18px;
+      }
+      .card-head .dot { width: 46px; height: 46px; border-radius: 50%; background: var(--orange); flex: none; }
+      .card-body { padding: 30px 34px; font-size: 36px; line-height: 1.45; }
+      .muted { color: #8a857c; }
+      .pill {
+        display: inline-block; padding: 8px 24px; border-radius: 999px; font-weight: 900; color: #fff;
+      }
+      .sign {
+        position: absolute; background: var(--navy); color: #fff; font-weight: 900; border-radius: 16px;
+        border: 5px solid var(--ink); text-align: center;
+      }
+      .board {
+        position: absolute; background: var(--navy); color: #fff; border: 6px solid var(--ink);
+        border-radius: 18px; font-weight: 700; overflow: hidden;
+      }
+      .chip { display: inline-block; background: #f2c200; color: var(--ink); font-weight: 900; border-radius: 10px; padding: 2px 16px; }
+      .bubble {
+        position: absolute; background: #fff; border: 5px solid var(--ink); border-radius: 30px;
+        padding: 22px 30px; font-weight: 700; text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="60" data-width="1080" data-height="1920">
+      <!-- Eine Zeile pro Szene. id = data-composition-id = Timeline-Key der Szene. Start/Dauer in Sekunden. -->
+      <div id="s1" data-composition-id="s1" data-composition-src="compositions/szene-beispiel.html" data-start="0" data-duration="4" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="60" data-track-index="1" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index: 10"></div>
+
+      <audio id="vo" class="clip" src="assets/voiceover.mp3" data-start="0" data-duration="58" data-track-index="2" data-volume="1"></audio>
+
+      <!-- Sound-Effekte: auf das Wort timen, Lautstärke 0.25–0.4 -->
+      <audio id="sfx-beispiel" class="clip" src="assets/sfx/pop.mp3" data-start="2.0" data-duration="0.72" data-track-index="3" data-volume="0.35"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

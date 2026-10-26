@@ -1,0 +1,37 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+
+    <!-- Shot A: Tom-Halbtotale, spricht (Lippen-Sync über data-talk) -->
+    <div id="s1-a" class="shot clip" data-start="0" data-duration="2.0" data-track-index="0">
+      <div class="cam">
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 330px; top: 760px; width: 420px"></div>
+      </div>
+    </div>
+
+    <!-- Shot B: UI-Karte poppt auf, Tom klein daneben -->
+    <div id="s1-b" class="shot clip" data-start="2.0" data-duration="2.0" data-track-index="0">
+      <div class="cam">
+        <div class="card" data-pop="0" style="left: 110px; top: 640px; width: 860px">
+          <div class="card-head"><span class="dot"></span>Titel der Karte</div>
+          <div class="card-body">
+            <div style="font-size: 76px; font-weight: 900">Große Zahl</div>
+            <div class="muted">Detailzeile</div>
+          </div>
+        </div>
+        <div class="ground" style="top: 1752px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 430px; top: 1250px; width: 260px"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s1"]');
+    // 3. Argument = Start dieser Szene in der Gesamt-Timeline (für den Lippen-Sync)
+    TomKit.setup(tl, root, 0);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>
