@@ -1,0 +1,29 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #e9e1ef; font-family: "Nunito", sans-serif; }
+    #card-cam { position: absolute; inset: 0; }
+    #card-cam svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .t { font-family: "Nunito", sans-serif; }#card-t{position:absolute;left:0;right:0;top:860px;text-align:center;font-family:"Nunito",sans-serif;font-weight:800;font-size:76px;color:#6e6878}
+  </style>
+  <div id="root" data-composition-id="card" data-width="1080" data-height="1920">
+    <div id="card-cam"><svg viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="headGrad" cx="0.62" cy="0.32" r="0.8">
+    <stop offset="0" stop-color="#fdfdfe"/>
+    <stop offset="0.55" stop-color="#f4f3f6"/>
+    <stop offset="1" stop-color="#d5d3dc"/>
+  </radialGradient>
+  <linearGradient id="floorShade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#000" stop-opacity="0.06"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0"/>
+  </linearGradient>
+</defs><rect width="1080" height="1920" fill="#e2d6ea"/><rect y="1500" width="1080" height="420" fill="#d6cbd8"/></svg></div>
+    <div id="card-t">1 Woche später…</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#card-cam",{scale:1},{scale:1,transformOrigin:"50% 60%",duration:1.6,ease:"none"},0);
+    tl.fromTo("#card-t",{opacity:0,y:12},{opacity:1,y:0,duration:0.3,ease:"power2.out"},0.05);
+    window.__timelines["card"] = tl;
+  </script>
+</template>
