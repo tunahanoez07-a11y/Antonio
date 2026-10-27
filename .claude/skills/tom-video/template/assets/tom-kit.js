@@ -246,6 +246,16 @@
     });
   }
 
+  // Sanftes Auf und Ab für Deko (Stinkwolken, Dampf, Gedankenblasen): data-wobble="Pixel".
+  function wobble(tl, root) {
+    root.querySelectorAll("[data-wobble]").forEach((el, i) => {
+      const [s, e] = clipWindow(el);
+      const amp = parseFloat(el.dataset.wobble || "10");
+      const n = Math.max(1, Math.floor((e - s) / 0.45));
+      tl.fromTo(el, { y: 0 }, { y: -amp, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: n - 1 }, s + (i % 2) * 0.2);
+    });
+  }
+
   // Alles in einem Aufruf: zeichnen + animieren.
   function setup(tl, root, sceneStart) {
     mount(root);
@@ -253,7 +263,8 @@
     lipSync(tl, root, sceneStart);
     blink(tl, root);
     walk(tl, root);
+    wobble(tl, root);
   }
 
-  window.TomKit = { mount, lipSync, blink, walk, shots, setup, svg: { tom, guy, train, bike, speaker, stamp } };
+  window.TomKit = { mount, lipSync, blink, walk, wobble, shots, setup, svg: { tom, guy, train, bike, speaker, stamp } };
 })();

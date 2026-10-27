@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Fügt Kunstpausen nach Pointen in den Voiceover ein und verschiebt die Wort-Timings.
+Aufruf: python3 add_pauses.py [quelle.mp3]  (Standard: assets/voiceover-raw.mp3)
 Eingabe: assets/voiceover-raw.mp3 + assets/words-raw.json. Ausgabe: assets/voiceover.mp3 + assets/words.json.
 PAUSES = [(Schnittpunkt im Original in s, Pausenlänge in s), ...] – Schnittpunkt in die Lücke zwischen zwei Wörter legen."""
 import json, subprocess, sys
 PAUSES = [(10.64, 0.7), (22.98, 0.6), (25.455, 0.8), (34.16, 1.0), (39.07, 0.6), (44.98, 0.9), (48.48, 0.8)]
-src, out = "assets/voiceover-raw.mp3", "assets/voiceover.mp3"
+src = sys.argv[1] if len(sys.argv) > 1 else "assets/voiceover-raw.mp3"  # z. B. assets/voiceover-flat.mp3
+out = "assets/voiceover.mp3"
 cuts = [0.0] + [p for p, _ in PAUSES] + [None]
 parts, filt = [], []
 for i in range(len(cuts) - 1):

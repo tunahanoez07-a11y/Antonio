@@ -1,0 +1,100 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s6-desk { position: absolute; left: 400px; top: 1250px; width: 680px; height: 320px; background: #F2C200; border: 7px solid var(--ink); }
+    .s6-id { position: absolute; left: 70px; top: 640px; width: 940px; height: 590px; background: #EAF0E6; border: 7px solid var(--ink); border-radius: 30px; overflow: hidden; }
+    .s6-id .head { background: #5E8C6A; color: #fff; font-weight: 900; font-size: 46px; padding: 22px 34px; letter-spacing: .05em; }
+    .s6-id .photo { position: absolute; left: 36px; top: 130px; width: 290px; height: 380px; background: #fff; border: 5px solid var(--ink); border-radius: 10px; overflow: hidden; }
+    .s6-id .field { position: absolute; left: 370px; font-size: 32px; color: #6b7a68; }
+    .s6-id .val { font-size: 70px; font-weight: 900; color: var(--ink); position: relative; display: inline-block; }
+    .s6-pkg { position: absolute; background: #C9A26B; border: 7px solid var(--ink); border-radius: 6px; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+
+    <!-- Ausweis, bitte -->
+    <div id="s6-a" class="shot clip" data-start="0" data-duration="1.84" data-track-index="0">
+      <div class="cam">
+        <div class="bubble" data-pop="0.72" style="left: 420px; top: 640px; width: 520px; font-size: 54px">Ausweis, bitte.</div>
+        <div class="tk" data-kind="guy" data-hat="hair" data-hair="#2E2E2E" data-color="#C86B4A" style="left: 620px; top: 860px; width: 330px"></div>
+        <div class="s6-desk"><div style="margin: 40px 0 0 60px; font-weight: 900; font-size: 44px">Paketausgabe</div></div>
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 60px; top: 1000px; width: 300px"></div>
+        <svg class="stink" data-wobble="8" style="left: 100px; top: 900px; width: 220px" viewBox="0 0 300 160">
+          <path d="M50 150 q-20 -25 0 -50 q20 -25 0 -50"/><path d="M150 140 q-20 -25 0 -50 q20 -25 0 -50 q-20 -20 0 -35"/><path d="M250 150 q-20 -25 0 -50 q20 -25 0 -50"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Auf meinem Ausweis steht: TIM -->
+    <div id="s6-b" class="shot clip" data-start="1.84" data-duration="2.4" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="s6-id" data-pop="0">
+          <div class="head">PERSONALAUSWEIS</div>
+          <div class="photo"><div class="tk" data-kind="tom" style="left: -8px; top: 30px; width: 300px"></div></div>
+          <div class="field" style="top: 150px">Name<br /><span class="val">TIM
+            <svg class="abs" style="left: -50px; top: -26px; width: 300px; height: 150px; overflow: visible" viewBox="0 0 300 150">
+              <path id="s6-circle" d="M40 80 C40 16 250 6 270 62 C290 126 80 152 40 106 C20 86 60 34 130 26" fill="none" stroke="#E39B22" stroke-width="12" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
+            </svg></span></div>
+          <div class="field" style="top: 330px">Vorname<br /><span class="val" style="font-size: 52px">Tom</span></div>
+          <div class="field" style="top: 460px; font-size: 28px">Gültig bis 2036</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zum ersten Mal hilft das -->
+    <div id="s6-c" class="shot clip" data-start="4.24" data-duration="2.06" data-track-index="0">
+      <div class="cam">
+        <div class="pill" data-pop="1.04" style="position: absolute; left: 0; right: 0; margin: 0 auto; width: 640px; top: 640px; background: #3E9B56; font-size: 56px; text-align: center; padding: 18px 0">✓ Herausgabe erlaubt</div>
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 230px; top: 760px; width: 420px"></div>
+        <div class="s6-pkg" style="left: 600px; top: 1290px; width: 300px; height: 272px"><div style="margin-top: 90px; text-align: center; font-weight: 900; font-size: 44px">TIM</div></div>
+      </div>
+    </div>
+
+    <!-- Seufzer -->
+    <div id="s6-d" class="shot clip" data-start="6.3" data-duration="1.74" data-track-index="0" data-zoom="1.06">
+      <div class="cam">
+        <div class="tk" data-kind="tom" data-eyes="shut" data-talk style="left: -10px; top: 640px; width: 1100px"></div>
+        <svg class="stink" data-wobble="12" style="left: 200px; top: 500px; width: 680px" viewBox="0 0 300 160">
+          <path d="M50 150 q-20 -25 0 -50 q20 -25 0 -50"/><path d="M150 140 q-20 -25 0 -50 q20 -25 0 -50 q-20 -20 0 -35"/><path d="M250 150 q-20 -25 0 -50 q20 -25 0 -50"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Im Paket: eine neue Türklingel -->
+    <div id="s6-e" class="shot clip" data-start="8.04" data-duration="3.08" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div id="s6-bell" class="abs" style="left: 390px; top: 700px; width: 300px; height: 420px; background: #D9D4CB; border: 8px solid var(--ink); border-radius: 26px; opacity: 0">
+          <div style="margin: 60px auto 0; width: 150px; height: 150px; border-radius: 50%; background: #F2C200; border: 8px solid var(--ink)"></div>
+          <div style="margin: 40px auto 0; width: 220px; background: #fff; border: 5px solid var(--ink); font-weight: 900; font-size: 40px; text-align: center; padding: 6px">TIM</div>
+        </div>
+        <div class="s6-pkg" style="left: 290px; top: 1120px; width: 500px; height: 380px"></div>
+        <div class="s6-pkg" style="left: 160px; top: 1080px; width: 180px; height: 60px; transform: rotate(-25deg)"></div>
+        <div class="s6-pkg" style="left: 740px; top: 1080px; width: 180px; height: 60px; transform: rotate(25deg)"></div>
+        <div class="ground" style="top: 1500px"></div>
+      </div>
+    </div>
+
+    <!-- Abgang + Stempel -->
+    <div id="s6-f" class="shot clip" data-start="11.12" data-duration="2.6" data-track-index="0" data-zoom="1.0">
+      <div class="cam">
+        <div class="ground" style="top: 1565px"></div>
+        <div id="s6-walker" class="tk" data-kind="tom" data-look="right" data-walk="0.28" data-amp="16" style="left: 390px; top: 1000px; width: 300px"></div>
+        <svg id="s6-wstink" class="stink" data-wobble="8" style="left: 430px; top: 900px; width: 220px" viewBox="0 0 300 160">
+          <path d="M50 150 q-20 -25 0 -50 q20 -25 0 -50"/><path d="M150 140 q-20 -25 0 -50 q20 -25 0 -50 q-20 -20 0 -35"/><path d="M250 150 q-20 -25 0 -50 q20 -25 0 -50"/>
+        </svg>
+        <div class="tk" data-kind="stamp" data-top="DOPPELTER STRESSO" data-bottom="WIE IMMER" data-slam="0.5" style="left: 300px; top: 560px; width: 480px"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s6"]');
+    TomKit.setup(tl, root, 48.28);
+    tl.to("#s6-circle", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 3.44);
+    tl.fromTo("#s6-bell", { opacity: 0, y: 360 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)" }, 9.75);
+    tl.fromTo("#s6-walker", { x: 0 }, { x: 820, duration: 1.2, ease: "power1.in" }, 11.17);
+    tl.fromTo("#s6-wstink", { x: 0 }, { x: 820, duration: 1.2, ease: "power1.in" }, 11.17);
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

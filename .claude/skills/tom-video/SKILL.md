@@ -37,11 +37,15 @@ Vor dem Bauen den HyperFrames-Skill lesen (`/hyperframes`, Contract + `reference
 ### 1. Skript
 Thema vom User (sonst einen deutschen Alltagsfrust vorschlagen: Bürokratie, Behörden, Bahn, Vermieter, Paketdienst, Arzttermin, Steuererklärung …). Skript auf Deutsch schreiben, Zahlen ausschreiben („sieben Euro vierzig“), damit die Stimme sie richtig spricht. Vor dem Seufzer `[sighs]` einfügen.
 
-### 2. Stimme (ElevenLabs-Connector)
-- `creative_create_flow` → `creative_generate_speech` mit `model_id: eleven_v4`, Stimme **Dennis** `voice_id: bGkjVHUyQ9rRhorWJufM` (bodenständig, deutsch), **`generations_count: 1`** (User-Wunsch: nur ein Take, ~760–800 Credits pro Minute). Andere Stimme nur, wenn der User es will. Credits dem User am Ende nennen.
+### 2. Stimme (ElevenLabs-Connector) – lustlos wie die Referenz
+Ziel (gemessen an den Referenzvideos): tiefe Stimme ~106 Hz, sehr flache Melodie (~1,9 Halbtöne Streuung), wenig Dynamik. Siehe `STYLE_GUIDE.md` Abschnitt 9.
+- `creative_create_flow` → `creative_generate_speech` mit `model_id: eleven_v4`, Stimme **Clay** `voice_id: ed7QNPkbQjEAYxYSuzmM`, **`generations_count: 1`** (User-Wunsch: nur ein Take). Skript beginnt mit **`[tired] [bored]`**; Seufzer als `[sighs]`. Zahlen/Uhrzeiten in Ziffern schreiben („14:32 Uhr“, „8 und 18 Uhr“) – v4 spricht sie richtig und die Untertitel zeigen Ziffern. Kosten ~700 Credits pro Minute; dem User am Ende nennen. (Folge 1–2 nutzten noch Dennis `bGkjVHUyQ9rRhorWJufM` – zu hell/melodisch.)
 - Status pollen, `content_url` per `curl` nach `assets/voiceover-raw.mp3` laden.
-- Wort-Timings: `creative_add_flow_asset_node` (generation_id des Takes; gibt ggf. die TTS-Node-ID zurück – die verwenden) → `creative_transcribe_audio` (`eleven_scribe_v1`, `connect_from` = diese Node) → `words_download_url` nach `assets/words-raw.json` laden.
-- **Länge anpassen:** Ist der Take kürzer als Zieldauer − 3 s, mit `add_pauses.py` Kunstpausen (0,6–1,0 s) direkt nach Pointen einfügen (`PAUSES` = Schnittpunkte in Wortlücken). Das schreibt `assets/voiceover.mp3` + `assets/words.json` mit verschobenen Timings. Ohne Pausen: beide Dateien einfach umbenennen.
+- **Melodie glätten (kostenlos):** `pip install praat-parselmouth` (falls nötig), dann
+  `python3 ../../.claude/skills/tom-video/tools/flatten_voice.py assets/voiceover-raw.mp3 assets/voiceover-flat.mp3 --keep 0.55 --target 106`
+  – PSOLA, Dauer bleibt exakt gleich. Prüfen: `python3 ../../.claude/skills/tom-video/tools/voicestats.py assets/voiceover-flat.mp3`.
+- Wort-Timings: `creative_transcribe_audio` (`eleven_scribe_v1`, `connect_from` = die TTS-Node-ID aus dem Generate-Ergebnis) → `words_download_url` nach `assets/words-raw.json` laden. Tags wie `[tired]` tauchen als Wörter auf – `build_captions.py` filtert sie.
+- **Länge anpassen:** `PAUSES` in `add_pauses.py` setzen (Kunstpausen 0,5–1,0 s direkt nach Pointen, Schnittpunkte in Wortlücken) und `python3 add_pauses.py assets/voiceover-flat.mp3` → schreibt `assets/voiceover.mp3` + `assets/words.json`. Ohne Pausen: `PAUSES = []`.
 - Hinweis: Lokale Transkription (whisper) und Kokoro-TTS funktionieren hier nicht (HuggingFace gesperrt, Kokoro kann kein Deutsch).
 
 ### 3. Projekt anlegen
@@ -69,7 +73,8 @@ Erzeugt `assets/words.js` (für Lippen-Sync) und `compositions/captions.html` (K
   Am Ende des Scripts: `TomKit.setup(tl, root, SZENEN_START_GLOBAL);` – das zeichnet alle `.tk`-Figuren, macht den Kamera-Push-in, Pop-ins (`data-pop="0.4"` = Sekunden ab Shot-Start), Stempel-Slams (`data-slam`), Lippen-Sync (`data-talk`, optional `data-talk-from`/`data-talk-to` in Szenenzeit), Blinzeln und Laufzyklen (`data-walk="0.2" data-amp="28"`).
 - Figurgrößen (Tom, `width`): Totale 240–300 px, Halbtotale 420 px (left 330, top 760, Boden bei 1562), Close-up 640–760 px, Extrem-Close-up 1000–1100 px (left −10, top 640).
 - UI-Bausteine aus `index.html`: `.card` + `.card-head` (+ `.dot`) + `.card-body`, `.pill`, `.chip`, `.sign`, `.board`, `.bubble`, `.marker` (Handschrift), `.ground`. Handy-Mockup siehe Folge 1 (`#s1-phone`).
-- Weitere Kit-Elemente: `data-kind="train|bike|speaker|cup|stamp"`.
+- Weitere Kit-Elemente: `data-kind="train|bike|speaker|cup|stamp"`. Deko-Wackeln: `data-wobble="10"` (z. B. Stinkwolken `.stink`, Gedankenblasen).
+- Ideen aus den Referenzen (STYLE_GUIDE Abschnitt 8): Mindmap-Shot, steigernde Requisite über die Folge (z. B. Stinkwolken 1 → 2 → 3), Anzeigen/Akkus als Pointe, Callbacks auf frühere Folgen (Ausweis „TIM“ aus Folge 2).
 
 ### 6. Sound
 Bundled SFX (`assets/sfx/`): `pop` (UI erscheint), `ping` (Bestätigung/Betrag), `notification` (Nachricht/Durchsage), `error` (schlechte Nachricht), `whoosh-short` (Bewegung), `impact-bass-1` (Stempel). Lautstärke 0.25–0.4, als `<audio class="clip" id=…>` in `index.html`. Keine Musik (wie Referenzen).

@@ -1,0 +1,66 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s4-box { position: absolute; left: 560px; top: 1050px; width: 300px; height: 230px; background: #B8975F; border: 7px solid var(--ink); border-radius: 8px; text-align: center; }
+    .s4-map { position: absolute; left: 70px; top: 620px; width: 940px; height: 760px; background: #E9EFE3; border: 8px solid var(--ink); border-radius: 30px; overflow: hidden; }
+    .s4-road { position: absolute; background: #fff; border: 4px solid #C9C3B8; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+
+    <!-- Paket von 2019 -->
+    <div id="s4-a" class="shot clip" data-start="0" data-duration="4.96" data-track-index="0" data-zoom="1.04">
+      <div class="cam">
+        <div class="abs" style="left: 520px; top: 640px; width: 520px; height: 922px; background: #9B6B43; border: 7px solid var(--ink)"></div>
+        <div class="abs" style="left: 560px; top: 680px; width: 440px; height: 882px; background: #FFF6DA; border: 6px solid var(--ink)"></div>
+        <div class="tk" data-kind="guy" data-hat="glasses" data-color="#7B8C5E" style="left: 640px; top: 820px; width: 380px"></div>
+        <div class="s4-box" data-pop="0.4">
+          <div style="margin-top: 60px; font-weight: 900; font-size: 40px">Für: TIM</div>
+          <svg class="abs" style="left: -10px; top: -12px; width: 140px; height: 120px" viewBox="0 0 140 120">
+            <path d="M0 0 L130 0 M0 0 L0 110 M0 0 L120 100 M0 40 Q40 30 60 0 M0 80 Q70 70 100 0" fill="none" stroke="#8a857c" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="marker abs" data-pop="2.12" style="left: 600px; top: 1290px; font-size: 120px; color: var(--red)">2019</div>
+        <div class="ground" style="top: 1562px"></div>
+        <div class="tk" data-kind="tom" data-talk style="left: 80px; top: 760px; width: 420px"></div>
+        <svg class="stink" data-wobble="8" style="left: 160px; top: 640px; width: 280px" viewBox="0 0 300 160">
+          <path d="M90 150 q-20 -25 0 -50 q20 -25 0 -50"/><path d="M210 150 q-20 -25 0 -50 q20 -25 0 -50"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Paket liegt in der Filiale -->
+    <div id="s4-b" class="shot clip" data-start="4.96" data-duration="1.8" data-track-index="0">
+      <div class="cam">
+        <div class="card" data-pop="0.15" style="left: 110px; top: 640px; width: 860px">
+          <div class="card-head"><span class="dot"></span>📦 Paketdienst</div>
+          <div class="card-body" style="font-size: 44px; text-align: center; padding: 40px 30px">Ihr Paket liegt in der <b>Filiale</b>.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 km weg -->
+    <div id="s4-c" class="shot clip" data-start="6.76" data-duration="1.6" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="s4-map">
+          <div class="s4-road" style="left: -10px; top: 300px; width: 960px; height: 50px"></div>
+          <div class="s4-road" style="left: 420px; top: -10px; width: 50px; height: 780px"></div>
+          <div class="s4-road" style="left: 100px; top: 560px; width: 760px; height: 40px"></div>
+          <svg class="abs" style="left: 0; top: 0; width: 940px; height: 760px" viewBox="0 0 940 760">
+            <path id="s4-route" d="M150 640 L150 580 L445 580 L445 325 L790 325 L790 170" fill="none" stroke="#D9473A" stroke-width="12" stroke-dasharray="22 16" stroke-linecap="round"/>
+            <g transform="translate(150 640)"><path d="M0 0 C-50 -60 -40 -110 0 -110 C40 -110 50 -60 0 0 Z" fill="#2B4C8C" stroke="#1E1E1E" stroke-width="6"/><circle cx="0" cy="-72" r="16" fill="#fff"/></g>
+            <g transform="translate(790 170)"><path d="M0 0 C-50 -60 -40 -110 0 -110 C40 -110 50 -60 0 0 Z" fill="#F2C200" stroke="#1E1E1E" stroke-width="6"/><circle cx="0" cy="-72" r="16" fill="#fff"/></g>
+            <text x="150" y="700" text-anchor="middle" font-family="Inter" font-weight="900" font-size="36" fill="#1E1E1E">Ich</text>
+            <text x="790" y="230" text-anchor="middle" font-family="Inter" font-weight="900" font-size="36" fill="#1E1E1E">Filiale</text>
+          </svg>
+        </div>
+        <div class="marker abs" data-pop="0.32" style="left: 560px; top: 1050px; font-size: 140px; color: var(--red)">4 km</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s4"]');
+    TomKit.setup(tl, root, 31.18);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>

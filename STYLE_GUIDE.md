@@ -80,3 +80,16 @@ Wiederkehrende Elemente:
 5. „ANTNIO“-Gag irgendwo im Bild.
 6. Twist: Antnio wird Teil des Problems.
 7. Resignierter Schlusssatz + Antnio geht aus dem Bild.
+
+## 8. Ergänzungen aus Referenz 6 + 7 (Gym-Kündigung, „Empleado del mes“)
+
+- **Mindmap-Shot:** Tom klein in der Mitte, 5–6 Icons/Mini-Karten poppen nacheinander kreisförmig um ihn herum auf (Schlange, Kleingedrucktes, Preis, Uhr, Schloss, WLAN-Zettel), verbunden mit gepunkteten Linien. Ideal für Aufzählungen („Ich hab alles versucht: …“).
+- **Steigernde Requisiten-Callbacks:** ein Gegenstand kommt mehrfach wieder und wird jedes Mal ein Stück schlimmer (Stirnband „RACHA 2“ → „RACHA 3“, Notar-Rechnung +1 Monat).
+- **Anzeigen als Pointe:** Akku-/Fortschrittsbalken („AGUANTE“ fast leer), Nummernanzeige „N° 0003“ vs. eigene Nummer „N° 4.817“, Kalenderblätter „LUNES 6 / MARTES 7 ×2“.
+- **Ortswechsel per Mini-Bühne:** halbe Bildhöhe als Kasten (Büro, Fitnessstudio-Theke, Notar) mit Schalter, Figuren klein davor; Tom läuft rein/raus.
+- Mehr **Halbtotalen von Tom allein** zwischen den UI-Shots (er „erzählt“ in die Kamera), Close-ups für die trockenen Einzeiler.
+
+## 9. Stimme (gemessen)
+
+Die Referenz-Stimme ist tief und sehr monoton: Grundton ~107 Hz, Tonhöhen-Streuung ~3,2 Halbtöne (P10–P90 ~5,7), Lautstärke-Dynamik ~19 dB. Dennis (Folge 1–2) lag bei 137 Hz / 4,6 / 23 dB – zu hell und zu melodisch.
+**Ab Folge 3: ElevenLabs „Clay“ (`ed7QNPkbQjEAYxYSuzmM`) mit `[tired] [bored]` am Skriptanfang** → 108 Hz / 3,2 / 19,3 dB (Casting-Messung). Prüfen mit `.claude/skills/tom-video/tools/voicestats.py`.

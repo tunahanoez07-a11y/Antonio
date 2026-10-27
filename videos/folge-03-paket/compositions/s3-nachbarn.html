@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s3-box { position: absolute; left: 290px; top: 760px; width: 500px; height: 420px; background: #F2C200; border: 8px solid var(--ink); border-radius: 30px 30px 14px 14px; }
+    .s3-slot { position: absolute; left: 80px; top: 110px; width: 340px; height: 30px; background: var(--ink); border-radius: 15px; }
+    #s3-note { position: absolute; left: 130px; top: 40px; width: 240px; height: 110px; background: #fff; border: 5px solid var(--ink); border-radius: 6px; font-size: 28px; font-weight: 700; text-align: center; padding-top: 16px; }
+    .s3-panel { position: absolute; left: 150px; top: 600px; width: 780px; height: 900px; background: #C9CDD2; border: 8px solid var(--ink); border-radius: 24px; padding: 34px 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+    .s3-plate { position: relative; height: 88px; background: #fff; border: 4px solid var(--ink); border-radius: 12px; font-size: 32px; font-weight: 700; padding: 22px 0 0 84px; }
+    .s3-plate::before { content: ""; position: absolute; left: 18px; top: 18px; width: 44px; height: 44px; border-radius: 50%; background: #9A9A9A; border: 4px solid var(--ink); }
+    .s3-x { position: absolute; right: 14px; top: 8px; font-size: 56px; font-weight: 900; color: var(--red); opacity: 0; }
+    .s3-ok { position: absolute; right: 14px; top: 8px; font-size: 56px; font-weight: 900; color: #3E9B56; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+
+    <!-- Briefkasten mit Zettel -->
+    <div id="s3-a" class="shot clip" data-start="0" data-duration="2.4" data-track-index="0">
+      <div class="cam">
+        <div class="s3-box">
+          <div id="s3-note">Benachrich-<br />tigung</div>
+          <div class="s3-slot"></div>
+          <div style="position: absolute; left: 0; width: 100%; top: 230px; text-align: center; font-weight: 900; font-size: 54px">POST</div>
+        </div>
+        <div class="abs" style="left: 525px; top: 1180px; width: 30px; height: 382px; background: var(--ink)"></div>
+        <div class="ground" style="top: 1562px"></div>
+      </div>
+    </div>
+
+    <!-- Abgegeben bei: ??? -->
+    <div id="s3-b" class="shot clip" data-start="2.4" data-duration="2.96" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="card" data-pop="0" style="left: 90px; top: 620px; width: 900px">
+          <div class="card-head"><span class="dot"></span>Benachrichtigung</div>
+          <div class="card-body">
+            Wir haben Sie leider nicht angetroffen.<br />
+            Ihre Sendung wurde abgegeben bei:
+            <div style="margin-top: 22px; height: 70px; border-bottom: 5px dashed #8a857c"></div>
+          </div>
+        </div>
+        <div class="marker abs" data-pop="2.16" style="left: 0; width: 1080px; top: 1110px; text-align: center; font-size: 200px; color: var(--red)">???</div>
+      </div>
+    </div>
+
+    <!-- Steht nicht drauf. -->
+    <div id="s3-c" class="shot clip" data-start="5.36" data-duration="1.52" data-track-index="0" data-zoom="1.05">
+      <div class="cam">
+        <div class="tk" data-kind="tom" data-talk style="left: 160px; top: 700px; width: 760px"></div>
+        <svg class="stink" data-wobble="10" style="left: 300px; top: 540px; width: 480px" viewBox="0 0 300 160">
+          <path d="M90 150 q-20 -25 0 -50 q20 -25 0 -50"/><path d="M210 150 q-20 -25 0 -50 q20 -25 0 -50"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 14 Nachbarn, 13 machen nicht auf -->
+    <div id="s3-d" class="shot clip" data-start="6.88" data-duration="4.04" data-track-index="0" data-zoom="1.03">
+      <div class="cam">
+        <div class="s3-panel" data-layout-allow-overlap>
+          <div class="s3-plate">Müller<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Yilmaz<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Schmidt<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Nowak<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Weber<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Becker<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Kaya<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Schulz<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Koch<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Wagner<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Krause<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Wolf<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Hoffmann<span class="s3-x">✗</span></div>
+          <div class="s3-plate">Peters<span class="s3-ok">✓</span></div>
+          <div class="s3-plate" style="background: #f6dfae">TIM</div>
+          <div class="s3-plate" style="opacity: .5">—</div>
+        </div>
+        <div id="s3-14" class="marker abs" style="left: 0; width: 1080px; text-align: center; top: 1510px; font-size: 150px; color: var(--red); opacity: 0">14×</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const root = document.querySelector('[data-composition-id="s3"]');
+    TomKit.setup(tl, root, 20.26);
+    tl.fromTo("#s3-note", { y: 90 }, { y: 0, duration: 0.35, ease: "back.out(2)" }, 0.16);
+    tl.fromTo("#s3-14", { opacity: 0, scale: 2, rotation: -4 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.2, ease: "power4.in" }, 7.68);
+    root.querySelectorAll(".s3-x").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.1, ease: "power3.in" }, 9.08 + i * 0.07);
+    });
+    tl.fromTo(".s3-ok", { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.15, ease: "back.out(2)" }, 10.28);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>
