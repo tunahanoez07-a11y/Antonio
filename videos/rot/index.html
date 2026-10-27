@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de" data-resolution="portrait" data-composition-variables='[{"id": "title", "type": "string", "label": "Titel", "default": "\"ROT\""}, {"id": "accent", "type": "color", "label": "Farbe", "default": "#F0251F"}, {"id": "handle", "type": "string", "label": "Handle", "default": "@deinhandle"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      :root { --accent: #F0251F; --bg: #000000; --font-title: "Archivo Black"; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+      #root { position: relative; width: 1080px; height: 1920px; background: var(--bg); }
+      #title { position: absolute; left: 0; right: 0; top: 400px; text-align: center;
+               font-family: var(--font-title); font-size: 76px; letter-spacing: 1px; color: var(--accent); }
+      #handle { position: absolute; left: 0; right: 0; top: 1438px; text-align: center;
+                font-family: "Inter"; font-style: italic; font-size: 28px; color: #8d8d8d; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="65.0" data-width="1080" data-height="1920">
+      <div id="title" class="clip" data-start="0" data-duration="65.0" data-track-index="0" data-var-text="title">&quot;ROT&quot;</div>
+      <div id="handle" class="clip" data-start="0" data-duration="65.0" data-track-index="1" data-var-text="handle" data-layout-allow-caption-zone>@deinhandle</div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="65.0" data-track-index="2" data-track-kind="captions" data-width="1080" data-height="1920"></div>
+      <div id="s01" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="0.000" data-duration="6.400" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s02" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="6.400" data-duration="6.300" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s03" data-composition-id="s03" data-composition-src="compositions/s03.html" data-start="12.700" data-duration="4.900" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s04" data-composition-id="s04" data-composition-src="compositions/s04.html" data-start="17.600" data-duration="5.100" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s05" data-composition-id="s05" data-composition-src="compositions/s05.html" data-start="22.700" data-duration="5.750" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s06" data-composition-id="s06" data-composition-src="compositions/s06.html" data-start="28.450" data-duration="7.250" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s07" data-composition-id="s07" data-composition-src="compositions/s07.html" data-start="35.700" data-duration="2.700" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s08" data-composition-id="s08" data-composition-src="compositions/s08.html" data-start="38.400" data-duration="5.200" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s09" data-composition-id="s09" data-composition-src="compositions/s09.html" data-start="43.600" data-duration="4.200" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s10" data-composition-id="s10" data-composition-src="compositions/s10.html" data-start="47.800" data-duration="6.400" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s11" data-composition-id="s11" data-composition-src="compositions/s11.html" data-start="54.200" data-duration="4.100" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s12" data-composition-id="s12" data-composition-src="compositions/s12.html" data-start="58.300" data-duration="6.700" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <audio id="voice" class="clip" src="assets/voice.mp3" data-start="0" data-track-index="5" data-volume="1"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
