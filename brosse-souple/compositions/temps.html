@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Nunito", sans-serif; }
+    .tooth { position: absolute; left: 240px; top: 430px; overflow: visible; }
+    .brush { position: absolute; overflow: visible; }
+    .tag { position: absolute; font-weight: 800; font-size: 46px; color: #fff; white-space: nowrap; }
+    .tag b { color: var(--accent, #6ee7c5); font-weight: 900; }
+    .title { position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-weight: 900; font-size: 64px; line-height: 1.1; color: #fff; padding: 0 90px; }
+
+    #m-ring { position: absolute; left: 290px; top: 330px; overflow: visible; }
+    #m-time { position: absolute; left: 290px; top: 330px; width: 500px; height: 500px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 128px; color: #fff; }
+    .m-row { position: absolute; left: 140px; width: 800px; }
+    .m-lab { font-weight: 800; font-size: 40px; color: #fff; margin-bottom: 12px; display: flex; justify-content: space-between; }
+    .m-track { height: 34px; border-radius: 17px; background: rgba(255,255,255,0.14); overflow: hidden; }
+    .m-fill { height: 100%; width: 100%; border-radius: 17px; background: #f2b544; transform-origin: left; }
+    #m-r1 { top: 860px; } #m-r2 { top: 960px; }
+    #m-r2 .m-fill { background: var(--accent, #6ee7c5); }
+    #m-src { position: absolute; left: 0; right: 0; top: 1068px; text-align: center; font-size: 28px; color: rgba(255,255,255,0.6); font-weight: 600; }
+
+  </style>
+  <div id="root" data-composition-id="temps" data-width="1080" data-height="1920">
+    <svg id="m-ring" viewBox="0 0 500 500" width="500" height="500">
+      <circle cx="250" cy="250" r="190" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="34"/>
+      <circle id="m-arc" cx="250" cy="250" r="190" fill="none" stroke="#6ee7c5" stroke-width="34" stroke-linecap="round"
+        transform="rotate(-90 250 250)" stroke-dasharray="1193.8" stroke-dashoffset="1193.8"/>
+    </svg>
+    <div id="m-time"><span id="m-t45" data-layout-allow-overlap>45 s</span><span id="m-t2" data-layout-allow-overlap style="position:absolute">2 min</span></div>
+    <div id="m-r1" class="m-row"><div class="m-lab"><span>45 secondes</span><span>≈ 25 %</span></div><div class="m-track"><div id="m-f1" class="m-fill"></div></div></div>
+    <div id="m-r2" class="m-row"><div class="m-lab"><span>2 minutes</span><span>≈ 40 %</span></div><div class="m-track"><div id="m-f2" class="m-fill"></div></div></div>
+    <div id="m-src">plaque retirée · d'après Creeth et al., J Dent Hyg 2009</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#m-ring", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)" }, 0);
+    tl.fromTo("#m-time", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.1);
+    tl.fromTo("#m-t45", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.4);
+    tl.fromTo("#m-t2", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#m-arc", { strokeDashoffset: 1193.8 }, { strokeDashoffset: 746.1, duration: 1.0, ease: "power2.out" }, 1.46);
+    tl.fromTo("#m-r1", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 }, 1.6);
+    tl.fromTo("#m-f1", { scaleX: 0 }, { scaleX: 0.25, duration: 0.9, ease: "power2.out" }, 2.4);
+    tl.to("#m-t45", { opacity: 0, duration: 0.15 }, 4.4);
+    tl.to("#m-t2", { opacity: 1, duration: 0.2 }, 4.45);
+    tl.to("#m-arc", { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 4.45);
+    tl.fromTo("#m-r2", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 }, 4.5);
+    tl.fromTo("#m-f2", { scaleX: 0 }, { scaleX: 0.40, duration: 0.9, ease: "power2.out" }, 5.0);
+    tl.fromTo("#m-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.8);
+    window.__timelines["temps"] = tl;
+  </script>
+</template>

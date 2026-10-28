@@ -1,0 +1,50 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Nunito", sans-serif; }
+    .tooth { position: absolute; left: 240px; top: 430px; overflow: visible; }
+    .brush { position: absolute; overflow: visible; }
+    .tag { position: absolute; font-weight: 800; font-size: 46px; color: #fff; white-space: nowrap; }
+    .tag b { color: var(--accent, #6ee7c5); font-weight: 900; }
+    .title { position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-weight: 900; font-size: 64px; line-height: 1.1; color: #fff; padding: 0 90px; }
+
+    #t-brush { left: 300px; top: 390px; }
+    #t-x { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-size: 150px; font-weight: 900; color: #ff6b5b; }
+    #t-t1 { left: 0; right: 0; top: 1010px; text-align: center; }
+    #t-tool { position: absolute; left: 760px; top: 640px; width: 300px; height: 300px; overflow: visible; }
+    #t-t2 { left: 0; right: 0; top: 1010px; text-align: center; }
+
+  </style>
+  <div id="root" data-composition-id="tartre" data-width="1080" data-height="1920">
+    <svg id="t-tooth" class="tooth" viewBox="-40 0 480 470" width="600" height="588">
+        <path d="M80,60 C120,20 170,40 200,55 C230,40 280,20 320,60 C360,100 350,190 330,240 C315,290 305,330 295,400 C290,430 255,430 250,400 L235,300 C228,275 172,275 165,300 L150,400 C145,430 110,430 105,400 C95,330 85,290 70,240 C50,190 40,100 80,60 Z" fill="#f6f4ee" stroke="#cfe9e1" stroke-width="8" stroke-linejoin="round"/>
+        
+        <path id="t-gum" d="M-40,282 C60,262 120,310 200,300 C280,310 340,262 440,282 L440,470 L-40,470 Z" fill="#e9787a"/>
+        <path id="t-tart" d="M70,250 C110,232 150,262 200,250 C250,262 300,232 335,250 L328,285 C290,270 250,292 200,282 C150,292 110,270 76,285 Z" fill="#b49a6a" stroke="#8c7447" stroke-width="5"/>
+      </svg>
+    <svg id="t-brush" class="brush" viewBox="0 0 520 100" width="520" height="100">
+        <rect x="190" y="26" width="320" height="18" rx="9" fill="#6ee7c5"/>
+        <rect x="20" y="20" width="190" height="30" rx="14" fill="#6ee7c5"/><ellipse cx="40" cy="66" rx="11" ry="24" fill="#bff5e5"/><ellipse cx="64" cy="66" rx="11" ry="24" fill="#bff5e5"/><ellipse cx="88" cy="66" rx="11" ry="24" fill="#bff5e5"/><ellipse cx="112" cy="66" rx="11" ry="24" fill="#bff5e5"/><ellipse cx="136" cy="66" rx="11" ry="24" fill="#bff5e5"/><ellipse cx="160" cy="66" rx="11" ry="24" fill="#bff5e5"/><ellipse cx="184" cy="66" rx="11" ry="24" fill="#bff5e5"/>
+      </svg>
+    <div id="t-x">✕</div>
+    <svg id="t-tool" viewBox="0 0 300 300">
+      <rect x="60" y="20" width="34" height="210" rx="17" transform="rotate(35 77 125)" fill="#d7dee2"/>
+      <path d="M20,250 q-20,30 10,40 q20,4 26,-20" stroke="#d7dee2" stroke-width="10" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div id="t-t1" class="tag" data-layout-allow-overlap>le <b style="color:#f2b544">tartre</b> : trop dur pour une brosse</div>
+    <div id="t-t2" class="tag" data-layout-allow-overlap>ça, c'est pour le <b>dentiste</b></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#t-tart", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.1);
+    tl.fromTo("#t-t1", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0.3);
+    tl.fromTo("#t-brush", { y: -160, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power2.in" }, 1.5);
+    tl.to("#t-brush", { y: -30, rotation: -5, duration: 0.35, ease: "back.out(3)" }, 1.8);
+    tl.fromTo("#t-x", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(2.5)" }, 1.85);
+    tl.to(["#t-brush", "#t-x", "#t-t1"], { opacity: 0, duration: 0.2 }, 2.3);
+    tl.fromTo("#t-tool", { x: 260, y: -80, opacity: 0 }, { x: -330, y: -20, opacity: 1, duration: 0.45, ease: "power3.out" }, 2.45);
+    tl.to("#t-tart", { y: 60, opacity: 0, duration: 0.5, ease: "power2.in" }, 2.95);
+    tl.fromTo("#t-t2", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 2.5);
+    window.__timelines["tartre"] = tl;
+  </script>
+</template>

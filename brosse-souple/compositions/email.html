@@ -1,0 +1,65 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Nunito", sans-serif; }
+    .tooth { position: absolute; left: 240px; top: 430px; overflow: visible; }
+    .brush { position: absolute; overflow: visible; }
+    .tag { position: absolute; font-weight: 800; font-size: 46px; color: #fff; white-space: nowrap; }
+    .tag b { color: var(--accent, #6ee7c5); font-weight: 900; }
+    .title { position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-weight: 900; font-size: 64px; line-height: 1.1; color: #fff; padding: 0 90px; }
+
+    #e-win { position: absolute; left: 190px; top: 420px; width: 700px; height: 560px; }
+    #e-paper { position: absolute; left: 600px; top: 520px; width: 220px; height: 150px; border-radius: 18px;
+      background: repeating-linear-gradient(45deg, #c99a5b 0 6px, #b88647 6px 12px); box-shadow: 0 10px 0 #7a5a2e; }
+    #e-t1 { left: 0; right: 0; top: 1010px; text-align: center; }
+    #e-tooth-w { position: absolute; inset: 0; opacity: 0; }
+    #e-t2 { left: 0; right: 0; top: 290px; text-align: center; }
+    #e-t3 { left: 0; right: 0; top: 360px; text-align: center; }
+
+  </style>
+  <div id="root" data-composition-id="email" data-width="1080" data-height="1920">
+    <div id="e-glass">
+      <svg id="e-win" viewBox="0 0 700 560" width="700" height="560">
+        <rect x="10" y="10" width="680" height="540" rx="26" fill="#7cc6e8" opacity="0.35" stroke="#cfe9f5" stroke-width="12"/>
+        <line x1="350" y1="10" x2="350" y2="550" stroke="#cfe9f5" stroke-width="10"/>
+        <g transform="translate(40,70) scale(1.6)"><line id="e-s0" x1="70" y1="60" x2="150" y2="200" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/><line id="e-s1" x1="108" y1="90" x2="188" y2="240" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/><line id="e-s2" x1="146" y1="120" x2="226" y2="200" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/><line id="e-s3" x1="184" y1="60" x2="264" y2="240" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/><line id="e-s4" x1="222" y1="90" x2="302" y2="200" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/><line id="e-s5" x1="260" y1="120" x2="340" y2="240" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/><line id="e-s6" x1="298" y1="60" x2="378" y2="200" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.85"/></g>
+      </svg>
+      <div id="e-paper"></div>
+      <div id="e-t1" class="tag">vitre + <b style="color:#f2b544">papier de verre</b></div>
+    </div>
+    <div id="e-tooth-w">
+      <svg id="e-tooth" class="tooth" viewBox="-40 0 480 470" width="600" height="588">
+        <path d="M80,60 C120,20 170,40 200,55 C230,40 280,20 320,60 C360,100 350,190 330,240 C315,290 305,330 295,400 C290,430 255,430 250,400 L235,300 C228,275 172,275 165,300 L150,400 C145,430 110,430 105,400 C95,330 85,290 70,240 C50,190 40,100 80,60 Z" fill="#f6f4ee" stroke="#cfe9e1" stroke-width="8" stroke-linejoin="round"/>
+        <path id="e-ts0" d="M110,90 l30,70" stroke="#a9b4b6" stroke-width="6" stroke-linecap="round" fill="none"/><path id="e-ts1" d="M155,115 l30,70" stroke="#a9b4b6" stroke-width="6" stroke-linecap="round" fill="none"/><path id="e-ts2" d="M200,90 l30,70" stroke="#a9b4b6" stroke-width="6" stroke-linecap="round" fill="none"/><path id="e-ts3" d="M245,115 l30,70" stroke="#a9b4b6" stroke-width="6" stroke-linecap="round" fill="none"/><path id="e-ts4" d="M290,90 l30,70" stroke="#a9b4b6" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path id="e-gum" d="M-40,282 C60,262 120,310 200,300 C280,310 340,262 440,282 L440,470 L-40,470 Z" fill="#e9787a"/>
+        
+      </svg>
+      <div id="e-t2" class="tag">émail <b style="color:#ff6b5b">usé</b></div>
+      <div id="e-t3" class="tag">gencive qui <b style="color:#ff6b5b">recule</b></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#e-glass", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 0);
+    tl.fromTo("#e-paper", { x: 0, y: 0 }, { x: -380, y: 220, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.4);
+    tl.fromTo("#e-s0", { opacity: 0 }, { opacity: 0.85, duration: 0.15 }, 0.60);
+    tl.fromTo("#e-s1", { opacity: 0 }, { opacity: 0.85, duration: 0.15 }, 0.92);
+    tl.fromTo("#e-s2", { opacity: 0 }, { opacity: 0.85, duration: 0.15 }, 1.24);
+    tl.fromTo("#e-s3", { opacity: 0 }, { opacity: 0.85, duration: 0.15 }, 1.56);
+    tl.fromTo("#e-s4", { opacity: 0 }, { opacity: 0.85, duration: 0.15 }, 1.88);
+    tl.fromTo("#e-s5", { opacity: 0 }, { opacity: 0.85, duration: 0.15 }, 2.20);
+    tl.fromTo("#e-s6", { opacity: 0 }, { opacity: 0.85, duration: 0.15 }, 2.52);
+    tl.fromTo("#e-t1", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0.5);
+    tl.to("#e-glass", { opacity: 0, scale: 0.94, duration: 0.25, ease: "power2.in" }, 3.2);
+    tl.fromTo("#e-tooth-w", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 3.4);
+    tl.fromTo("#e-ts0", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.55);
+    tl.fromTo("#e-ts1", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.67);
+    tl.fromTo("#e-ts2", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.79);
+    tl.fromTo("#e-ts3", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.91);
+    tl.fromTo("#e-ts4", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 4.03);
+    tl.fromTo("#e-t2", { x: 0, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 3.6);
+    tl.fromTo("#e-gum", { y: 0 }, { y: 70, duration: 1.2, ease: "power2.inOut" }, 4.3);
+    tl.fromTo("#e-t3", { x: 0, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 4.4);
+    window.__timelines["email"] = tl;
+  </script>
+</template>

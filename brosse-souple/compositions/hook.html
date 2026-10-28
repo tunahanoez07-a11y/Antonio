@@ -1,0 +1,44 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Nunito", sans-serif; }
+    .tooth { position: absolute; left: 240px; top: 430px; overflow: visible; }
+    .brush { position: absolute; overflow: visible; }
+    .tag { position: absolute; font-weight: 800; font-size: 46px; color: #fff; white-space: nowrap; }
+    .tag b { color: var(--accent, #6ee7c5); font-weight: 900; }
+    .title { position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+      font-weight: 900; font-size: 64px; line-height: 1.1; color: #fff; padding: 0 90px; }
+
+    #h-brush { left: 300px; top: 330px; }
+    #h-stamp { position: absolute; left: 0; right: 0; top: 640px; text-align: center; }
+    #h-stamp span { display: inline-block; font-weight: 900; font-size: 190px; color: #ff6b5b;
+      border: 14px solid #ff6b5b; border-radius: 28px; padding: 0 44px; background: rgba(15,42,58,0.82); }
+    #h-q { position: absolute; left: 0; right: 0; top: 1040px; text-align: center; font-weight: 900; font-size: 60px; color: #fff; }
+    #h-q b { color: #ff6b5b; }
+
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <svg id="h-tooth" class="tooth" viewBox="-40 0 480 470" width="600" height="588">
+        <path d="M80,60 C120,20 170,40 200,55 C230,40 280,20 320,60 C360,100 350,190 330,240 C315,290 305,330 295,400 C290,430 255,430 250,400 L235,300 C228,275 172,275 165,300 L150,400 C145,430 110,430 105,400 C95,330 85,290 70,240 C50,190 40,100 80,60 Z" fill="#f6f4ee" stroke="#cfe9e1" stroke-width="8" stroke-linejoin="round"/>
+        
+        <path id="h-gum" d="M-40,282 C60,262 120,310 200,300 C280,310 340,262 440,282 L440,470 L-40,470 Z" fill="#e9787a"/>
+        
+      </svg>
+    <svg id="h-brush" class="brush" viewBox="0 0 520 100" width="520" height="100">
+        <rect x="190" y="26" width="320" height="18" rx="9" fill="#e4524a"/>
+        <rect x="20" y="20" width="190" height="30" rx="10" fill="#e4524a"/><rect x="30" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="46" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="62" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="78" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="94" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="110" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="126" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="142" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="158" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="174" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/><rect x="190" y="44" width="9" height="46" rx="2" fill="#9aa7ad"/>
+      </svg>
+    <div id="h-q">brosse <b>dure</b> = plus propre&nbsp;?</div>
+    <div id="h-stamp"><span id="h-stamp-in">FAUX</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo("#h-tooth", { scale: 0.86, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.6)" }, 0);
+    tl.fromTo("#h-brush", { x: 260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0.1);
+    tl.to("#h-brush", { x: -90, duration: 0.16, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.42);
+    tl.fromTo("#h-q", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 0.25);
+    tl.fromTo("#h-stamp-in", { scale: 2.4, rotation: -14, opacity: 0 }, { scale: 1, rotation: -8, opacity: 1, duration: 0.22, ease: "back.out(2)" }, 2.08);
+    tl.to("#h-brush", { y: -60, opacity: 0.25, duration: 0.25, ease: "power2.out" }, 2.08);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>
