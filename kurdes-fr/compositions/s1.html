@@ -1,0 +1,39 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #1e1b18; }
+    .disp { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -0.01em; }
+    .kick { font-family: Inter, sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 0.18em; text-transform: uppercase; color: #c2452d; }
+    #s1-box { position: absolute; left: 90px; right: 90px; top: 330px; }
+    #s1-num { font-size: 168px; line-height: 1; white-space: nowrap; }
+    #s1-unit { font-size: 46px; color: #6b5e50; margin-top: 18px; }
+    .s1-line { font-size: 112px; line-height: 1.12; margin-top: 26px; }
+    #s1-l1 { margin-top: 90px; }
+    #s1-l3 { color: #c2452d; }
+    #s1-flag { width: 300px; height: 190px; margin-top: 40px; border: 6px dashed #c2452d; border-radius: 14px; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-box">
+      <div id="s1-num" class="disp">30 000 000</div>
+      <div id="s1-unit">personnes, et plus</div>
+      <div id="s1-l1" class="s1-line disp">Une langue.</div>
+      <div id="s1-l2" class="s1-line disp">Une culture.</div>
+      <div id="s1-l3" class="s1-line disp">Aucun pays.</div>
+      <div id="s1-flag"></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const c = { v: 0 };
+    const fmt = (n) => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    tl.fromTo(c, { v: 29400000 }, { v: 30000000, duration: 1.7, ease: "power2.out",
+      onUpdate: () => { document.querySelector("#s1-num").textContent = fmt(c.v); } }, 0);
+    tl.fromTo("#s1-num", { scale: 1.08, transformOrigin: "0% 50%" }, { scale: 1, duration: 1.7, ease: "power2.out" }, 0);
+    tl.fromTo("#s1-unit", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.4);
+    tl.fromTo("#s1-l1", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.9);
+    tl.fromTo("#s1-l2", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.05);
+    tl.fromTo("#s1-l3", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 5.7);
+    tl.fromTo("#s1-flag", { opacity: 0, scale: 0.8, transformOrigin: "0% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 6.1);
+    tl.to("#s1-box", { opacity: 0, y: -60, duration: 0.3, ease: "power2.in" }, 7.0);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

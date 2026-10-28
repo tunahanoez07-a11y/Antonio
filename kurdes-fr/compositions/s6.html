@@ -1,0 +1,39 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #1e1b18; }
+    .disp { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -0.01em; }
+    .kick { font-family: Inter, sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 0.18em; text-transform: uppercase; color: #c2452d; }
+    #s6-title { position: absolute; left: 90px; right: 90px; top: 260px; font-size: 104px; line-height: 1; }
+    #s6-tab { position: absolute; left: 90px; right: 90px; top: 520px; }
+    .s6-row { display: flex; border-bottom: 4px solid #1e1b18; padding: 34px 0; }
+    .s6-row > div { flex: 1; text-align: center; }
+    #s6-hd > div { font-size: 30px; font-weight: 700; letter-spacing: 0.16em; color: #6b5e50; }
+    #s6-hd { padding: 18px 0; }
+    .s6-fr { font-family: 'Playfair Display', serif; font-size: 66px; }
+    .s6-ku { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 84px; color: #c2452d; }
+    .s6-fa { font-family: 'Playfair Display', serif; font-size: 66px; color: #6b5e50; }
+    #s6-note { position: absolute; left: 90px; right: 90px; top: 1250px; font-size: 30px; color: #6b5e50; text-align: center; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-title" class="disp">Quelques exemples</div>
+    <div id="s6-tab">
+      <div id="s6-hd" class="s6-row"><div>FRANÇAIS</div><div>KURDE</div><div>PERSAN</div></div>
+      <div class="s6-row"><div id="s6-f1" class="s6-fr">deux</div><div id="s6-k1" class="s6-ku">du</div><div id="s6-p1" class="s6-fa">do</div></div>
+      <div class="s6-row"><div id="s6-f2" class="s6-fr">nom</div><div id="s6-k2" class="s6-ku">nav</div><div id="s6-p2" class="s6-fa">nâm</div></div>
+      <div class="s6-row"><div id="s6-f3" class="s6-fr">nouveau</div><div id="s6-k3" class="s6-ku">nû</div><div id="s6-p3" class="s6-fa">now</div></div>
+    </div>
+    <div id="s6-note">kurde : kurmandji · persan : transcription latine</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const up = (id, t) => tl.fromTo(id, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, t);
+    up("#s6-title", 0.1);
+    tl.fromTo(".s6-row", { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.08 }, 0.6);
+    tl.set(["#s6-f1","#s6-k1","#s6-p1","#s6-f2","#s6-k2","#s6-p2","#s6-f3","#s6-k3","#s6-p3"], { opacity: 0 }, 0.6);
+    up("#s6-f1", 1.8); up("#s6-k1", 3.1); up("#s6-p1", 3.45);
+    up("#s6-f2", 5.3); up("#s6-k2", 6.4); up("#s6-p2", 6.75);
+    up("#s6-f3", 7.6); up("#s6-k3", 8.9); up("#s6-p3", 9.2);
+    tl.fromTo("#s6-note", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.6);
+    window.__timelines["s6"] = tl;
+  </script>
+</template>

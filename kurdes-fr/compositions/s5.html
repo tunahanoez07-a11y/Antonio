@@ -1,0 +1,45 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #1e1b18; }
+    .disp { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -0.01em; }
+    .kick { font-family: Inter, sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 0.18em; text-transform: uppercase; color: #c2452d; }
+    #s5-tree { position: absolute; left: 90px; top: 260px; width: 900px; height: 1060px; }
+    .s5-ln { fill: none; stroke: #1e1b18; stroke-width: 6; stroke-linecap: round; }
+    .s5-dot { fill: #1e1b18; }
+    .s5-t { font-family: Inter, sans-serif; font-weight: 700; font-size: 44px; fill: #1e1b18; }
+    .s5-big { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 62px; }
+    .s5-hot { fill: #c2452d; }
+    .s5-sub { font-family: Inter, sans-serif; font-size: 34px; fill: #6b5e50; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <svg id="s5-tree" viewBox="0 0 900 1060">
+      <path id="s5-l1" class="s5-ln" d="M300 560 C300 420 170 380 170 230"/>
+      <path id="s5-l2" class="s5-ln" d="M300 560 C300 420 430 380 430 230"/>
+      <path id="s5-l3" class="s5-ln" d="M450 930 C450 760 300 700 300 560"/>
+      <path id="s5-l4" class="s5-ln" d="M450 930 C450 760 760 700 760 230"/>
+      <g id="s5-gk"><circle class="s5-dot s5-hot" cx="170" cy="230" r="18"/><text class="s5-t s5-big s5-hot" x="170" y="170" text-anchor="middle">Kurde</text></g>
+      <g id="s5-gi"><circle class="s5-dot" cx="300" cy="560" r="16"/><text class="s5-t" x="330" y="575">iranien</text></g>
+      <g id="s5-gp"><circle class="s5-dot" cx="430" cy="230" r="18"/><text class="s5-t s5-big" x="430" y="170" text-anchor="middle">Persan</text></g>
+      <g id="s5-gr"><circle class="s5-dot" cx="450" cy="930" r="22"/><text class="s5-t" x="450" y="1010" text-anchor="middle">indo-européen</text></g>
+      <g id="s5-gf"><circle class="s5-dot" cx="760" cy="230" r="18"/><text class="s5-t s5-big" x="760" y="170" text-anchor="middle">Français</text></g>
+    </svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const draw = (id, t, d) => {
+      const p = document.querySelector(id); const L = p.getTotalLength();
+      tl.fromTo(id, { strokeDasharray: L, strokeDashoffset: L, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, duration: d, ease: "power2.inOut" }, t);
+    };
+    tl.fromTo("#s5-gk", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+    draw("#s5-l1", 1.7, 0.6);
+    tl.fromTo("#s5-gi", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 1.85);
+    draw("#s5-l2", 3.2, 0.6);
+    tl.fromTo("#s5-gp", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.4);
+    draw("#s5-l3", 5.9, 0.8);
+    tl.fromTo("#s5-gr", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 6.5);
+    draw("#s5-l4", 7.8, 0.9);
+    tl.fromTo("#s5-gf", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.55);
+    tl.to("#root > *", { opacity: 0, duration: 0.3 }, 9.35);
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

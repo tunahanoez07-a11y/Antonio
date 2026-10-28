@@ -1,0 +1,28 @@
+<template>
+  <style>
+#root { position: absolute; inset: 0; font-family: Inter, sans-serif; color: #1e1b18; }
+    .disp { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -0.01em; }
+    .kick { font-family: Inter, sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 0.18em; text-transform: uppercase; color: #c2452d; }
+    #s4-q { position: absolute; left: 90px; right: 90px; top: 360px; font-size: 140px; line-height: 1.05; }
+    .s4-chip { position: absolute; left: 90px; padding: 26px 46px; border: 4px solid #1e1b18; border-radius: 999px; font-size: 64px; font-weight: 700; background: #fbf6ec; }
+    #s4-c1 { top: 820px; }
+    #s4-c2 { top: 820px; left: 560px; }
+    #s4-stamp { position: absolute; left: 0; right: 0; top: 1020px; text-align: center; font-size: 230px; color: #c2452d; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-q" class="disp">Et leur langue&nbsp;?</div>
+    <div id="s4-c1" class="s4-chip">le turc&nbsp;?</div>
+    <div id="s4-c2" class="s4-chip">l'arabe&nbsp;?</div>
+    <div id="s4-stamp" class="disp" data-layout-allow-overlap>Raté.</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s4-q", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.15);
+    tl.fromTo("#s4-c1", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 3.35);
+    tl.fromTo("#s4-c2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 4.65);
+    tl.to(["#s4-c1", "#s4-c2"], { opacity: 0.25, duration: 0.25 }, 6.1);
+    tl.fromTo("#s4-stamp", { opacity: 0, scale: 1.8, rotation: -14 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.3, ease: "power4.out" }, 6.1);
+    tl.to("#root > *", { opacity: 0, duration: 0.3 }, 7.25);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>
